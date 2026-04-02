@@ -1,0 +1,12 @@
+{
+  "name": "pacificwash",
+  "version": "1.0.0",
+  "description": "PacificWash - Book the washing machine with your roommates!",
+  "scripts": {
+    "start": "serve .",
+    "dev": "serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

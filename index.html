@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#ffb6c1" />
+  <meta name="description" content="PacificWash – Book the washing machine with your roommates!" />
+  <title>PacificWash 🫧</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="mascot.png" />
+  <link rel="apple-touch-icon" href="mascot.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Floating bubbles background -->
+  <div class="bubbles-bg" aria-hidden="true">
+    <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+    <div class="bubble"></div><div class="bubble"></div><div class="bubble"></div>
+    <div class="bubble"></div><div class="bubble"></div>
+  </div>
+
+  <!-- AUTH VIEW -->
+  <div class="auth-view" id="authView">
+    <img src="mascot.png?v=2" alt="PacificWash mascot" class="auth-mascot" />
+    <div class="auth-card">
+      <h1>Welcome to PacificWash 🫧</h1>
+      <p>Who's doing laundry today?</p>
+      <div class="auth-input-group">
+        <input type="text" id="loginNameInput" class="auth-input" placeholder="Enter your name to start..." maxlength="20" autocomplete="off" />
+        <button id="loginBtn" class="auth-btn">Let's Wash! ✨</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- APP VIEW (Hidden initially) -->
+  <div class="app-view" id="appView">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="header-left">
+          <img src="mascot.png?v=2" alt="PacificWash mascot" class="mascot" />
+          <div class="header-text">
+            <h1>PacificWash</h1>
+            <p class="tagline">Book the washer, stay fresh! 🧺</p>
+          </div>
+        </div>
+        <div class="user-profile">
+          <span id="currentUserDisplay"></span>
+          <button id="logoutBtn" class="logout-btn">(Logout)</button>
+        </div>
+      </div>
+      <!-- Week nav -->
+      <nav class="week-nav" aria-label="Week navigation">
+        <button class="week-btn" id="prevWeek" aria-label="Previous week">‹</button>
+        <span class="week-label" id="weekLabel">This Week</span>
+        <button class="week-btn" id="nextWeek" aria-label="Next week">›</button>
+      </nav>
+    </header>
+
+    <!-- Main booking grid -->
+    <main class="main-content" id="mainContent">
+      <!-- Days will be rendered by JS -->
+    </main>
+  </div>
+
+  <!-- Booking Modal -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      <div class="modal-mascot">🫧</div>
+      <h2 id="modalTitle">Book Slot</h2>
+      <p id="modalSubtitle" class="modal-subtitle"></p>
+
+      <div class="modal-note-section">
+        <label for="noteInput">Note (optional)</label>
+        <input type="text" id="noteInput" placeholder="e.g. heavy load 🧥, sheets 🛏️" maxlength="40" autocomplete="off" />
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-confirm" id="confirmBtn">Confirm Booking ✨</button>
+        <button class="btn btn-cancel" id="cancelBtn">Maybe later</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cancel Modal -->
+  <div class="modal-overlay" id="cancelOverlay" role="dialog" aria-modal="true" aria-labelledby="cancelTitle" hidden>
+    <div class="modal modal-sm">
+      <button class="modal-close" id="cancelOverlayClose" aria-label="Close">✕</button>
+      <div class="modal-mascot">😟</div>
+      <h2 id="cancelTitle">Cancel booking?</h2>
+      <p id="cancelSubtitle" class="modal-subtitle"></p>
+      <div class="modal-actions">
+        <button class="btn btn-danger" id="confirmCancelBtn">Yes, cancel it</button>
+        <button class="btn btn-cancel" id="keepBtn">Nope, keep it!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Application Logic (Loaded as a module for Firebase) -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
